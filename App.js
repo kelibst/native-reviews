@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import Home from './screens/Home';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font'
+import { globalStyles } from './styles.js/global';
 
   const getFonts = () => Font.loadAsync({
     'Nunito-bold': require('./assets/fonts/Nunito/Nunito-Bold.ttf'),
@@ -16,7 +17,7 @@ export default function App() {
 
   if(fontsLoaded){
     return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <Home />
       <StatusBar style="auto" />
     </View>
@@ -31,12 +32,3 @@ export default function App() {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
