@@ -5,6 +5,7 @@ import Home from './screens/Home';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font'
 import { globalStyles } from './styles.js/global';
+import Navigator from './routes/HomeStack';
 
   const getFonts = () => Font.loadAsync({
     'Nunito-bold': require('./assets/fonts/Nunito/Nunito-Bold.ttf'),
@@ -18,7 +19,7 @@ export default function App() {
   if(fontsLoaded){
     return (
     <View style={globalStyles.container}>
-      <Home />
+      <Navigator />
       <StatusBar style="auto" />
     </View>
   );
