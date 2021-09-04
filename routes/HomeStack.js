@@ -6,13 +6,20 @@ import Home from "../screens/Home";
 
 const screens = {
     Home: {
-        screen: Home
+        screen: Home,
+        navigationOptions: {
+            title: 'Zelda Fan Page',
+        }
     },
     ReviewDetails: {
         screen: Details
     }
 }
 
-const HomeStack = createStackNavigator(screens);
+const HomeStack = createStackNavigator(screens, {
+    defaultNavigationOptions: {
+        headerStyle: {backgroundColor: '#eee'}
+    }
+});
 
 export default createAppContainer(HomeStack);
