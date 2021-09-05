@@ -2,13 +2,16 @@ import { createStackNavigator } from "react-navigation-stack"
 import Details from "../screens/Details";
 import { createAppContainer } from 'react-navigation'
 import Home from "../screens/Home";
-
+import Header from '../shared/header'
+import React from 'react'
 
 const screens = {
     Home: {
         screen: Home,
-        navigationOptions: {
-            title: 'Zelda Fan Page',
+        navigationOptions: ({ navigation }) => {
+            return {
+                headerTitle: () => <Header navigation={navigation} title='Zelda Fan Page'/>,
+            }
         }
     },
     ReviewDetails: {
@@ -22,4 +25,4 @@ const HomeStack = createStackNavigator(screens, {
     }
 });
 
-export default createAppContainer(HomeStack);
+export default HomeStack;
