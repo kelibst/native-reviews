@@ -44,6 +44,9 @@ export const globalStyles = StyleSheet.create({
       shadowRadius: 4,
       elevation: 5
     },
+    ratingCont:{
+      marginVertical: 20
+    },
     formContainer: {
       width: "100%",
     },
