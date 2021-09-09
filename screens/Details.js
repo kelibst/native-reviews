@@ -1,17 +1,22 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, Pressable, StyleSheet, Text, View } from "react-native";
 import Card from "../shared/card";
 import Stars from 'react-native-stars';
+import { globalStyles } from "../styles.js/global";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const Details = ({ navigation }) => {
+
+  const deleteReview = navigation.getParam("delReview")
+  const item = navigation.getParam("item")
   return (
     <View>
       <Card>
-        <Text style={styles.ratingTitle }>{navigation.getParam("title")}</Text>
-        <Text style={styles.ratingBody}>{navigation.getParam("body")}</Text>
+        <Text style={styles.ratingTitle }>{item.title}</Text>
+        <Text style={styles.ratingBody}>{item.body}</Text>
         <View style={{ alignItems: "center" }}>
           <Stars
-            display={navigation.getParam('rating')}
+            display={navigation.getParam('item').rating}
             spacing={8}
             count={5}
             starSize={40}
@@ -19,6 +24,7 @@ const Details = ({ navigation }) => {
             emptyStar={require("../assets/images/starEmpty.png")}
           />
         </View>
+       <Button title="delete" onPress={() => {deleteReview(item.key)}}/>
       </Card>
     </View>
   );

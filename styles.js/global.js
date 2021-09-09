@@ -50,6 +50,9 @@ export const globalStyles = StyleSheet.create({
     formContainer: {
       width: "100%",
     },
+    deBtn: {
+      
+    },
     formInput: {
       borderWidth: 1,
       borderColor: "#ddd",

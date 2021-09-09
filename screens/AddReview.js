@@ -39,7 +39,7 @@ const AddReview = ({ addReviews }) => {
                   }  
                 }
                 count={5}
-                starSize={20}
+                starSize={30}
                 fullStar={require("../assets/images/starFilled.png")}
                 emptyStar={require("../assets/images/starEmpty.png")}
               />

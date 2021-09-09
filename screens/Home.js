@@ -26,9 +26,8 @@ const Home = ({ navigation }) => {
     { title: "Super Mario", rating: 5, body: "very awesome", key: "2" },
     { title: "Evil Twin", rating: 5, body: "very awesome", key: "3" },
   ]);
-  const pressHandler = () => {
-    navigation.navigate("ReviewDetails");
-  };
+ 
+  
   const [modalVisible, setModalVisible] = useState(false);
 
   const addReview = (review) => {
@@ -37,6 +36,28 @@ const Home = ({ navigation }) => {
       return [review, ...currentReviews];
     });
     setModalVisible(false)
+  }
+
+  const delReview = (key) => {
+    let nReviews =  reviews?.filter(rev => rev.key !== key)
+    navigation.navigate("Home")
+    setReviews(nReviews)
+    Alert.alert(
+      "Alert Title",
+      "My Alert Msg",
+      [
+        {
+          text: "Ask me later",
+          onPress: () => console.log("Ask me later pressed")
+        },
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ]
+    );
   }
  
   return (
@@ -79,7 +100,7 @@ const Home = ({ navigation }) => {
         data={reviews}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() => navigation.navigate("ReviewDetails", item)}
+            onPress={() => navigation.navigate("ReviewDetails", {item, delReview})}
           >
             <Card>
               <Text style={globalStyles.titleText}>{item.title}</Text>
