@@ -10,7 +10,7 @@ const Details = ({ navigation }) => {
   const deleteReview = navigation.getParam("delReview")
   const item = navigation.getParam("item")
   return (
-    <View>
+    <View style={styles.container}>
       <Card>
         <Text style={styles.ratingTitle }>{item.title}</Text>
         <Text style={styles.ratingBody}>{item.body}</Text>
@@ -24,7 +24,17 @@ const Details = ({ navigation }) => {
             emptyStar={require("../assets/images/starEmpty.png")}
           />
         </View>
-       <Button title="delete" onPress={() => {deleteReview(item.key)}}/>
+        <Pressable
+              style={[globalStyles.buttonClose]}
+              onPress={() => {
+                deleteReview(item.key)
+              }}
+            >
+              <Text style={globalStyles.btnTextStyle}>
+                <MaterialIcons name="delete" size={20} />
+              </Text>
+            </Pressable>
+      
       </Card>
     </View>
   );
@@ -33,7 +43,11 @@ const Details = ({ navigation }) => {
 export default Details;
 
 const styles = StyleSheet.create({
+  container: {
+    marginTop: 10
+  },
   ratingTitle: {
+    marginTop: 30,
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",

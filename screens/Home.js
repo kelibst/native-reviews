@@ -1,12 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import {
-  Alert,
-  Button,
   FlatList,
   Modal,
   Pressable,
   Text,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -38,26 +37,22 @@ const Home = ({ navigation }) => {
     setModalVisible(false)
   }
 
+  const showToastWithGravityAndOffset = (message) => {
+    ToastAndroid.showWithGravityAndOffset(
+      message,
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      25,
+      50
+    );
+  };
+
+
   const delReview = (key) => {
     let nReviews =  reviews?.filter(rev => rev.key !== key)
     navigation.navigate("Home")
     setReviews(nReviews)
-    Alert.alert(
-      "Alert Title",
-      "My Alert Msg",
-      [
-        {
-          text: "Ask me later",
-          onPress: () => console.log("Ask me later pressed")
-        },
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ]
-    );
+   showToastWithGravityAndOffset(      "You just deleted a review!",)
   }
  
   return (
@@ -68,7 +63,7 @@ const Home = ({ navigation }) => {
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
+            showToastWithGravityAndOffset("Review not added!")
             setModalVisible(!modalVisible);
           }}
         >
@@ -76,11 +71,11 @@ const Home = ({ navigation }) => {
            
             <View style={globalStyles.modalView}> 
             <Pressable
-              style={[globalStyles.button, globalStyles.buttonClose]}
+              style={[globalStyles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
             >
               <Text style={globalStyles.textStyle}>
-                <MaterialIcons name="close" size={20} />{" "}
+                <MaterialIcons name="close" size={20} />
               </Text>
             </Pressable>
               <AddReview addReviews={addReview}/>

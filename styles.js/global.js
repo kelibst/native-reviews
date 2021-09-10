@@ -48,7 +48,7 @@ export const globalStyles = StyleSheet.create({
       marginVertical: 20
     },
     formContainer: {
-      width: "100%",
+      // width: "100%",
     },
     deBtn: {
       
@@ -60,7 +60,6 @@ export const globalStyles = StyleSheet.create({
       fontSize: 18,
       borderRadius: 10,
       marginBottom: 10,
-      width: "100%",
       shadowOffset: {
         width: 0,
         height: 2
@@ -75,12 +74,20 @@ export const globalStyles = StyleSheet.create({
       backgroundColor: "#333",
     },
     buttonClose: {
-      backgroundColor: "#2196F3",
+      backgroundColor: "#E91E63",
+      padding: 5,
+      position: "absolute",
+      right: 10,
+      borderRadius: 100,
+      top: 10
     },
     textStyle: {
       color: "white",
       fontWeight: "bold",
       textAlign: "center"
+    },
+    btnTextStyle: {
+      color: "white",
     },
     modalText: {
       marginBottom: 15,
